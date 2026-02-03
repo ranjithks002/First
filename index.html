@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #FBEF76;
+    }
+    .container {
+        height: 600px;
+        width: 850px;
+        border: 2px solid black;
+        position: relative;
+        left: 300px;
+        top: 50px;
+        background-color: #FEC288;
+        border-radius: 10px;
+    }
+    input[type="text"], input[type="number"], #busroute, #seattype, #bustype {
+        width: 300px;
+        margin-left: 30px;
+        margin-bottom: 20px;
+        height: 20px;
+        border-radius: 5px;
+    }
+    #button {
+         width: 300px;
+        margin-left: 30px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        height: 40px;
+        border-radius: 15px;
+        text-align: center;
+        background-color: #FA5C5C;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2em;
+        box-shadow: 1px 5px black;
+    }
+    #button:hover {
+        background-color: #FD8A6B;
+    }
+    label {
+        margin-left: 30px;
+        font-weight: bold;
+    }
+    h1 {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    img {
+        height: 250px;
+        width: 250px;
+        position: absolute;
+        left:580px;
+        bottom: 370px;
+    }
+    .status {
+        position: absolute;
+        right: 150px;
+        bottom: 140px;
+        display: none;
+    }
+    .status.show {
+        display: block;
+    }
+    .status p {
+        /* line-height: 1.8; */
+    }
+    .inner {
+        height: 200px;
+        width: 250px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 2px 2px 10px black;
+        line-height: 1.8;
+
+    }
+    .inner u {
+        margin-left: 50px;
+    }
+    .inner p {
+        margin-left: 10px;
+        line-height: 1.8;
+    }
+</style>
+<body>
+    <div class="container">
+    <h1>Bus Ticket<br>Booking</h1><br>
+    <label for="">Enter Bus Name:</label><br>
+    <input type="text" id="busname" value="KPN TRAVELS"><br>
+    <label for="">Enter Your Age:</label><br>
+    <input type="number" id="age"><br>
+
+    <label for="">Select Bus Route:</label><br>
+    <select id="busroute">
+        <option>Select</option>
+        <option>Trichy-Chennai</option>
+        <option>Trichy-Bangalore</option>
+        <option>Trichy-Madurai</option>
+    </select><br>
+
+    <label for="">Select Seat Type:</label><br>
+    <select id="seattype">
+    <option>Select</option>
+    <option value="500">Regular Seat (₹500)</option>
+    <option value="700">Premium Seat (₹700)</option>
+    <option value="1000">VIP Seat (₹1000)</option>
+    </select><br>
+
+    <label for="">Select Bus Type:</label><br>
+    <select id="bustype">
+        <option>Select</option>
+        <option value="100">A/C Bus (₹100)</option>
+        <option value="0">Non A/C Bus (₹0)</option>
+    </select><br>
+
+    <label for="">Enter Number of Tickets:</label><br>
+    <input type="number" id="count"><br>
+    <button id="button" onclick="ticket()">Submit</button>
+    <img src="busimage.png" alt="No image">
+    <div class="status" id="statusDiv">
+    <h3>Status</h3>
+    <div class="inner">
+    <u>Booking Summary</u>
+    <p id="res"></p>
+    </div>
+    </div>
+    </div>
+
+    <script>
+        function ticket() {
+            var busname=document.getElementById("busname").value 
+            var busroute=document.getElementById("busroute").value
+            var seattype=Number(document.getElementById("seattype").value)
+            var bustype=Number(document.getElementById("bustype").value)
+            var count=Number(document.getElementById("count").value)
+            var res=document.getElementById("res")
+            var f=(seattype+bustype)*count
+            res.innerHTML=`Bus name - ${busname}<br>
+            Bus Route - ${busroute}<br>
+            Total Price - ₹${f.toFixed(2)}`
+
+             statusDiv.classList.add("show");
+        }
+    </script>
+</body>
+</html>
